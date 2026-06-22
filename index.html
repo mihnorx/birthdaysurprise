@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday | Best Wishes for Your Success</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: #06020c;
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Party Poppers Layer */
+        #partyCanvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 99;
+        }
+
+        /* --- STAGE 1: FIRST PAGE WITH PREMIUM BIRTHDAY BACKGROUND IMAGE --- */
+        #reveal-gate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Online Birthday Celebration Background Image Added Here */
+            background: linear-gradient(rgba(11, 5, 20, 0.85), rgba(11, 5, 20, 0.85)), 
+                        url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        #reveal-gate.open {
+            transform: scale(1.1);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Luxury Birthday Box Wrapper */
+        .celebration-box {
+            text-align: center;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(15px);
+            max-width: 480px;
+            width: 90%;
+            position: relative;
+            animation: floatUp 4s ease-in-out infinite;
+        }
+
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Modern Visual Cake Badge */
+        .premium-cake-badge {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #2e1a40, #130721);
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+        .premium-cake-badge::after {
+            content: '✨';
+            position: absolute;
+            top: -5px; right: -5px;
+            font-size: 1.2rem;
+            animation: spinSparkle 3s linear infinite;
+        }
+
+        @keyframes spinSparkle {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .gate-title {
+            font-family: 'Marcellus', serif;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            color: #ffffff;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .gate-desc {
+            font-size: 0.85rem;
+            color: #f3e5ab;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .gate-btn {
+            background: linear-gradient(135deg, #d4af37, #f3e5ab, #aa7c11);
+            color: #0b0514;
+            border: none;
+            padding: 18px 45px;
+            font-family: 'Marcellus', serif;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .gate-btn:hover {
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.7);
+            transform: scale(1.05) translateY(-2px);
+            letter-spacing: 4px;
+        }
+
+        /* --- STAGE 2: MAIN PRAYER & TYPING SCREEN --- */
+        .main-showcase {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            z-index: 2;
+            transition: opacity 1s ease;
+        }
+        .main-showcase.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        @media (max-width: 900px) {
+            .main-showcase { grid-template-columns: 1fr; grid-template-rows: auto auto; overflow-y: auto; height: auto; }
+        }
+
+        .content-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8% 10%;
+        }
+        .subtitle {
+            font-family: 'Marcellus', serif;
+            font-size: 0.9rem;
+            color: #d4af37;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        h1.headline {
+            font-family: 'Marcellus', serif;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 35px;
+            background: linear-gradient(to right, #ffffff, #f3e5ab, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .typing-container {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #cbd5e1;
+            font-weight: 300;
+            min-height: 250px;
+        }
+        
+        .typed-cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: #d4af37;
+            margin-left: 3px;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .display-panel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.01);
+            padding: 40px;
+        }
+        .gallery-container {
+            display: flex;
+            width: 100%;
+            max-width: 380px;
+            height: 65vh;
+        }
+        .photo-card {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .photo-card.show { opacity: 1; transform: translateY(0); }
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- STAGE 3: EXCLUSIVE BROTHER NEXT PAGE SCREEN --- */
+        #final-page {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #190c24 0%, #05020a 100%);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.5s ease-in-out;
+            padding: 20px;
+        }
+        #final-page.active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 500;
+        }
+
+        .final-header {
+            text-align: center;
+            margin-bottom: 30px;
+            transform: translateY(-20px);
+            transition: all 1s ease 0.5s;
+            opacity: 0;
+        }
+        #final-page.active .final-header { transform: translateY(0); opacity: 1; }
+
+        .final-header h2 {
+            font-family: 'Marcellus', serif;
+            font-size: 2.8rem;
+            color: #d4af37;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(212,175,55,0.3);
+        }
+        .final-header p {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .brother-profile-card {
+            width: 320px;
+            height: 480px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+            transform: scale(0.9);
+            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 0.8s;
+            opacity: 0;
+        }
+        #final-page.active .brother-profile-card { transform: scale(1); opacity: 1; }
+        .brother-profile-card img { width: 100%; height: 100%; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+    <!-- Continuous Canvas Layer for Party Popper Confetti Effects -->
+    <canvas id="partyCanvas"></canvas>
+
+    <!-- STAGE 1: INTRO CONTAINER WITH REAL CELEBRATION BACKGROUND -->
+    <div id="reveal-gate">
+        <div class="celebration-box">
+            <div class="premium-cake-badge">🎂</div>
+            <h2 class="gate-title">Happy Birthday</h2>
+            <p class="gate-desc">An Exclusive Surprise Awaits</p>
+            <button class="gate-btn" onclick="openSurprise()">Enter Experience ✨</button>
+        </div>
+    </div>
+
+    <!-- STAGE 2: PRAYER & TYPING AREA -->
+    <main class="main-showcase" id="birthdayStage">
+        <section class="content-panel">
+            <span class="subtitle">May Blessings Follow Your Path</span>
+            <h1 class="headline">Happy Birthday <br>To My Dearest Brother</h1>
+            <div class="typing-container" id="typedTarget"></div>
+        </section>
+
+        <section class="display-panel">
+            <div class="gallery-container">
+                <!-- Verbatim Reference to "faisal.jpg" -->
+                <div class="photo-card" id="frame-faisal">
+                    <img src="faisal.jpg" alt="faisal.jpg">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- STAGE 3: EXCLUSIVE REDIRECT NEXT PAGE -->
+    <div id="final-page">
+        <div class="final-header">
+            <h2>Stay Blessed & Happy Always! ✨</h2>
+            <p>Thank you for always supporting me.</p>
+        </div>
+        <!-- Verbatim Reference to "brother.jpg" -->
+        <div class="brother-profile-card">
+            <img src="brother.jpg" alt="brother.jpg">
+        </div>
+    </div>
+
+    <script>
+        // --- 1. FULL PARTY POPPER / FALLING CONFETTI SYSTEM ---
+        const canvas = document.getElementById('partyCanvas');
+        const ctx = canvas.getContext('2d');
+        let confettiArray = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Confetti {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * -canvas.height - 20;
+                this.size = Math.random() * 7 + 4;
+                this.speedY = Math.random() * 3 + 2.5;
+                this.speedX = (Math.random() - 0.5) * 2.5;
+                const colors = ['#d4af37', '#aa7c11', '#f3e5ab', '#ffffff', '#c084fc'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 3 - 1.5;
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        for(let i=0; i<120; i++) { confettiArray.push(new Confetti()); }
+
+        function animationLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confettiArray.forEach(c => { c.update(); c.draw(); });
+            requestAnimationFrame(animationLoop);
+        }
+        animationLoop();
+
+
+        // --- 2. LIVE TYPING SCRIPT ---
+        const wishText = [
+            "On this special day, I pray that the Almighty blesses you with unwavering wisdom, infinite strength, and boundless opportunities. May your hard work always pave the way for extraordinary achievements.\n\n",
+            "As you step into another promising year, I pray that your career and future paths are illuminated with absolute success. May you achieve every single goal you set for yourself with grace and confidence.\n\n",
+            "May you always walk with your head held high, protected by divine light. Remember, I will always be praying for your success and standing right behind you. 🤍"
+        ];
+
+        let paragraphIndex = 0;
+        let charIndex = 0;
+        const targetElement = document.getElementById('typedTarget');
+
+        function startTypingEffect() {
+            targetElement.innerHTML = '<span id="liveContent"></span><span class="typed-cursor">|</span>';
+            const contentBox = document.getElementById('liveContent');
+
+            function type() {
+                if (paragraphIndex < wishText.length) {
+                    let currentPara = wishText[paragraphIndex];
+                    
+                    if (charIndex < currentPara.length) {
+                        if (currentPara.substr(charIndex, 2) === "\n\n") {
+                            contentBox.innerHTML += "<br><br>";
+                            charIndex += 2;
+                        } else {
+                            contentBox.innerHTML += currentPara.charAt(charIndex);
+                            charIndex++;
+                        }
+                        setTimeout(type, Math.random() * 15 + 20);
+                    } else {
+                        paragraphIndex++;
+                        charIndex = 0;
+                        setTimeout(type, 400);
+                    }
+                } else {
+                    transitionToFinalPage();
+                }
+            }
+            type();
+        }
+
+
+        // --- 3. DYNAMIC DISMISS & REDIRECT ---
+        function openSurprise() {
+            document.getElementById('reveal-gate').classList.add('open');
+            
+            setTimeout(() => {
+                document.getElementById('frame-faisal').classList.add('show');
+                startTypingEffect();
+            }, 800);
+        }
+
+        function transitionToFinalPage() {
+            setTimeout(() => {
+                document.getElementById('birthdayStage').classList.add('fade-out');
+                
+                setTimeout(() => {
+                    document.getElementById('final-page').classList.add('active');
+                }, 800);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
